@@ -4,7 +4,7 @@ colorir(g(Vertices,Arestas),Cores,Coloracao):-
 
 gerar([],_,[]).
 gerar([V|Vertices],Cores,[V-C|T]):-
-   member(C,Cores),
+   cor(C),
    gerar(Vertices,Cores,T).
 
 testar([],_).
@@ -14,29 +14,33 @@ testar([e(V1,V2)|Arestas],Coloracao):-
    C1\=C2,
    testar(Arestas,Coloracao).
 
+cor(azul).
+cor(verde).
 
-test(1).
-test(2).
-test(g(A,B)) :-
-    test(A),
-    test(B).
+tentativa(Cores, Coloracao):-
+    colorir(g(
+		  [1,2,3,4,5,6],
+          [e(1,2), e(2,3), e(3,4), e(4,5), e(5,6), e(6,1)]),
+         Cores,
+         Coloracao).
+
 
 /*
 colorir(g(
           [1,2,3],
           [e(1,2), e(1,3), e(2,3)]),
-        [r,g,b],
-        C)
+        Cores,
+        Coloracao).
 
 colorir(g(
 		  [1,2,3,4,5],
           [e(1,2), e(2,3), e(3,4), e(4,5), e(5,1)]),
-         [azul,verde],
-         C)
+         Cores,
+         Coloracao).
 
 colorir(g(
 		  [1,2,3,4,5,6],
           [e(1,2), e(2,3), e(3,4), e(4,5), e(5,6), e(6,1)]),
-         [azul,verde],
-         C)
+         Cores,
+         Coloracao).
 */
